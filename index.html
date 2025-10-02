@@ -1,0 +1,387 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elara's AI Adventure: Crafting Tomorrow's Classroom</title>
+    <style>
+        body {
+            font-family: 'Arial', 'Microsoft YaHei', sans-serif; /* Added Chinese font */
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            cursor: pointer; 
+        }
+
+        .book-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            padding: 2rem;
+            width: 90%;
+            max-width: 700px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative; /* For the button */
+        }
+        
+        #lang-toggle {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            z-index: 10;
+        }
+
+        #book-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 1.5rem;
+        }
+
+        #book-content {
+            text-align: left;
+            margin-top: 1rem;
+            /* white-space: pre-wrap; REMOVED to allow HTML rendering */
+            line-height: 1.8;
+            font-size: 1.1em;
+            overflow-y: auto;
+            max-height: 50vh;
+            padding-right: 15px;
+        }
+
+        h1, h2, p {
+            margin: 0.5rem 0;
+        }
+        
+        a { /* Style for the new link */
+            color: #007bff;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+        #title, #author {
+            color: #222;
+        }
+        
+        #page-number {
+            font-weight: bold;
+            color: #666;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="book-container">
+        <button id="lang-toggle">Chinese</button>
+        <h1 id="title"></h1>
+        <h2 id="author"></h2>
+        <img id="book-image" src="" alt="Book Image">
+        <p id="book-content"></p>
+        <p id="page-number"></p>
+    </div>
+
+    <script>
+        const ALL_BOOK_DATA = {
+  "en": {
+    "1": "Ms. Elara, a teacher with a heart full of questions, gazed out her classroom window. \"How can I make learning even more amazing?\" she wondered, dreaming of new ways to spark curiosity in her students.",
+    "2": "Then, a bright idea! The World AI Conference was happening, a place where big minds shared big ideas about the future. \"Perhaps,\" she thought, \"the answers lie there!\"",
+    "3": "The conference hall buzzed like a beehive! Screens glowed, robots whirred, and people chatted excitedly. Ms. Elara felt a little overwhelmed by all the newness.",
+    "4": "Suddenly, a sign caught her eye: \"AI in Education: Shaping Future Minds.\" Her heart fluttered with hope. This was exactly what she was looking for!",
+    "5": "At the \"AI in Education\" booth, she met Dr. Kael, a friendly expert with kind eyes and a warm smile. \"Welcome!\" he greeted her. \"How can AI transform learning for you?\"",
+    "6": "Dr. Kael explained, \"Imagine AI helping every student learn at their very own speed, on their very own path. No one left behind, no one held back!\"",
+    "7": "Ms. Elara closed her eyes and pictured a young student, Leo, happily solving math problems that were just right for him, not too hard, not too easy. His face was bright with understanding.",
+    "8": "\"And what about busy work?\" Dr. Kael continued. \"AI can be a super-efficient teaching assistant, helping with things like grading papers, so teachers have more time for what truly matters.\"",
+    "9": "Ms. Elara imagined herself spending less time with red pens and more time helping students with their big ideas, reading stories, and exploring new projects. What a dream!",
+    "10": "\"But AI isn't just for tasks,\" Dr. Kael added, \"it's also a fantastic partner for creativity! Think of AI helping students compose music, write stories, or even paint digital masterpieces.\"",
+    "11": "Ms. Elara saw Leo, his eyes sparkling, using a tablet to create a swirling, colourful digital painting, guided by an AI tool that understood his artistic vision.",
+    "12": "Dr. Kael then spoke of accessibility. \"AI can break down barriers, offering tools that help every student, no matter their unique needs, to learn and thrive.\"",
+    "13": "Ms. Elara imagined a student who struggled with reading, now listening to a story narrated perfectly by an AI, or a student with hearing difficulties seeing real-time captions of her words.",
+    "14": "\"Of course,\" Dr. Kael said, his voice serious, \"we must also teach students to think critically about AI. To understand its strengths and its limits, and to use it ethically and responsibly.\"",
+    "15": "Ms. Elara nodded, understanding. The human touch, the warmth of a teacher, the kindness of classmates – these were things AI could never replace. It was about balance.",
+    "16": "Dr. Kael showed her how AI could foster amazing collaborations. \"Students from different schools, even different countries, could work together on projects, guided by AI tools!\"",
+    "17": "Ms. Elara envisioned Leo and another student, perhaps from far away, building a virtual city together, their ideas flowing seamlessly with the help of AI.",
+    "18": "The conference showed Ms. Elara that AI wasn't just a tool; it was an opportunity. An opportunity for teachers to be even more creative, innovative, and impactful.",
+    "19": "A clear vision began to form in Ms. Elara's mind. It wasn't about replacing teachers, but about empowering them. It was about making learning a grand adventure for everyone!",
+    "20": "Her vision was a classroom where AI was a helpful friend, a guide, and a creative partner, working hand-in-hand with human teachers to unlock every student's potential.",
+    "21": "She saw a future classroom, vibrant and alive, where students explored, created, and learned with joy, each on their unique path, supported by smart technology and caring teachers.",
+    "22": "\"Thank you, Dr. Kael,\" Ms. Elara said, her voice full of gratitude. \"You've shown me a world of possibilities!\" She left the conference, her mind buzzing with exciting plans.",
+    "23": "Back in her own classroom, Ms. Elara looked at her students with new eyes. Her heart was full of ideas, ready to weave AI into their learning journey, thoughtfully and creatively.",
+    "24": "And so, Ms. Elara began to craft tomorrow's classroom, one exciting lesson at a time, proving that with a clear vision and a little help from AI, the future of education was truly boundless.",
+    "25": "URL:Quantum Computing AI:https://quantumcompai.netlify.app",
+    "title": "Elara's AI Adventure: Crafting Tomorrow's Classroom",
+    "author": "By AI"
+  },
+  "zh": {
+    "1": "埃拉拉老师，一位心中充满疑问的教师，凝视着她的教室窗外。她想知道：“怎样才能让学习变得更加精彩呢？”她梦想着用新的方法来激发学生的好奇心。",
+    "2": "突然，一个绝妙的主意出现了！世界AI大会正在举行，这是一个汇聚了智慧的大脑，分享关于未来宏伟想法的地方。“也许，”她心想，“答案就在那里！”",
+    "3": "会议大厅像蜂巢一样嗡嗡作响！屏幕发着光，机器人嗡嗡地转着，人们兴奋地聊着天。面对所有这些新事物，埃拉拉老师感到有点不知所措。",
+    "4": "突然，一个标语映入她的眼帘：“AI在教育中的应用：塑造未来心智”。她的心充满了希望。这正是她一直在寻找的！",
+    "5": "在“AI在教育中的应用”展位，她遇到了卡尔博士，一位友善的专家，他有着和蔼的眼神和温暖的笑容。“欢迎！”他向她打招呼。“AI能如何为你改变学习呢？”",
+    "6": "卡尔博士解释说：“想象一下AI帮助每个学生以他们自己的速度，走他们自己的路学习。没有人掉队，没有人被拖慢！”",
+    "7": "埃拉拉老师闭上眼睛，想象着一个名叫里奥的年轻学生，正开心地解决着对他来说恰到好处的数学题，不太难，也不太容易。他的脸上洋溢着理解的光芒。",
+    "8": "“那么那些繁琐的工作呢？”卡尔博士继续说道。“AI可以成为一个超级高效的助教，帮忙批改试卷之类的事务，这样老师们就有更多的时间去做真正重要的事情了。”",
+    "9": "埃拉拉老师想象着自己花在红笔上的时间少了，而有更多的时间来帮助学生实现他们的大创意、阅读故事和探索新项目。多么美好的梦想啊！",
+    "10": "“但AI不仅限于任务，”卡尔博士补充说，“它也是一个很棒的创造力伙伴！想想AI帮助学生谱曲、写故事，甚至绘画数字杰作。”",
+    "11": "埃拉拉老师看到里奥，他眼睛闪闪发光，正用平板电脑创作一幅色彩斑斓、旋涡状的数字绘画，由一个理解他艺术视觉的AI工具引导着。",
+    "12": "接着，卡尔博士谈到了无障碍性。 “AI可以打破障碍，提供工具来帮助每一位学生，无论他们有什么独特的需要，都能学习和成长。”",
+    "13": "埃拉拉老师想象着一个在阅读上有困难的学生，现在正听着AI完美地叙述故事；或者一个有听力困难的学生，实时看到她话语的字幕。",
+    "14": "“当然，”卡尔博士的语调变得严肃，“我们也必须教导学生批判性地思考AI。去理解它的长处和局限，并合乎道德和负责任地使用它。”",
+    "15": "埃拉拉老师点点头，表示理解。人性的接触、老师的温暖、同学的友善——这些是AI永远无法取代的东西。关键在于平衡。",
+    "16": "卡尔博士向她展示了AI如何促进精彩的协作。“来自不同学校，甚至是不同国家的学生，可以在AI工具的指导下一起完成项目 ！”",
+    "17": "埃拉拉老师设想里奥和另一个学生，也许来自遥远的地方，正在一起建造一座虚拟城市，他们的想法在AI的帮助下无缝地流淌着。",
+    "18": "这次会议向埃拉拉老师展示了AI不只是一个工具；它是一个机遇。一个让教师变得更具创造力、创新精神和影响力的机遇。",
+    "19": "一个清晰的愿景开始在埃拉拉老师的脑海中形成。这不是关于取代老师，而是关于赋能他们。这是关于让学习成为每个人的宏大冒险！",
+    "20": "她的愿景是一个教室，AI是一位乐于助人的朋友、一位向导和一位创造性的伙伴，与人类教师携手合作，解锁每一个学生的潜力。",
+    "21": "她看到了一个未来的课堂，充满活力和生机，学生们探索、创造、快乐地学习，每个人都在自己独特的道路上，得到智能技术和关爱老师的支持。",
+    "22": "“谢谢您，卡尔博士，”埃拉拉老师感激地说。“您向我展示了一个充满可能性的世界！” 她离开了会议，脑子里充满了令人兴奋的计划。",
+    "23": "回到自己的教室里，埃拉拉老师用新的眼光看着她的学生们。她的心中充满了想法，准备将AI深思熟虑且富有创意地融入他们的学习旅程。",
+    "24": "因此，埃拉拉老师开始打造明日的课堂，一堂激动人心的课接着一堂，证明了只要有一个清晰的愿景和一点来自AI的帮助，教育的未来是真正无限的。",
+    "25": "URL:量子计算人工智能:https://quantumcompai.netlify.app",
+    "title": "埃拉拉的AI奇遇:打造明日课堂",
+    "author": "作者:By AI"
+  }
+};
+        
+        const synth = window.speechSynthesis;
+        let currentLang = 'en'; // Default language is English
+        let currentPage = -1; // -1 for cover
+
+        // Mapping language codes to speech voices
+        const VOICE_MAP = {
+            'en': 'en-US',
+            'zh': 'zh-CN' 
+        };
+        
+        function speakContent(text) {
+            if (!synth) {
+                console.warn("Speech synthesis not supported.");
+                return;
+            }
+            
+            if (synth.speaking) {
+                synth.cancel();
+            }
+
+            const utterance = new SpeechSynthesisUtterance(text);
+            
+            // Set the language voice based on the current locale
+            const voiceCode = VOICE_MAP[currentLang];
+            const voices = synth.getVoices();
+            const selectedVoice = voices.find(voice => voice.lang === voiceCode) || null;
+            
+            if (selectedVoice) {
+                utterance.voice = selectedVoice;
+            } else {
+                // Fallback: set the language tag
+                utterance.lang = voiceCode;
+            }
+
+            synth.speak(utterance);
+        }
+        
+        function stopSpeaking() {
+            if (synth && synth.speaking) {
+                synth.cancel();
+            }
+        }
+
+        function getBookData() {
+            return ALL_BOOK_DATA[currentLang];
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const imageElement = document.getElementById('book-image');
+            const contentElement = document.getElementById('book-content');
+            const titleElement = document.getElementById('title');
+            const authorElement = document.getElementById('author');
+            const pageNumberElement = document.getElementById('page-number');
+            const langToggleButton = document.getElementById('lang-toggle');
+
+            // --- Function to toggle language ---
+            function toggleLanguage() {
+                currentLang = currentLang === 'en' ? 'zh' : 'en';
+                
+                // --- Core Change 1: Update button text based on the TARGET language ---
+                if (currentLang === 'zh') {
+                    langToggleButton.textContent = '英文'; // Book is now in Chinese, button offers English
+                } else {
+                    langToggleButton.textContent = 'Chinese'; // Book is now in English, button offers Chinese
+                }
+                
+                // --- Core Change 2: DO NOT reset currentPage, keeping the current page index ---
+                
+                updateUI();
+            }
+            
+            langToggleButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+                toggleLanguage();
+            });
+            
+            // Set initial button state (English mode, button says "Chinese")
+            langToggleButton.textContent = 'Chinese'; 
+
+            function updateUI() {
+                const bookData = getBookData();
+                const bookKeys = Object.keys(bookData);
+                const totalTextPages = bookKeys.filter(key => !isNaN(parseInt(key))).length;
+                
+                // Adjust currentPage if it exceeds the maximum number of pages in the new language
+                if (currentPage > totalTextPages) {
+                    currentPage = totalTextPages;
+                }
+
+                const isCoverPage = currentPage === -1;
+                const isEndPage = currentPage === totalTextPages;
+
+                let imagePath, content, title, author, pageText;
+
+                // --- 1. Determine Content and Metadata ---
+                if (isCoverPage) {
+                    title = bookData.title || 'Untitled';
+                    author = bookData.author || '';
+                    imagePath = `images/${bookData.cover || 'cover.png'}`;
+                    content = bookData.cover_text || '';
+                    pageText = '';
+                } else if (isEndPage) {
+                    title = bookData.title;
+                    author = bookData.author;
+                    imagePath = `images/end.png`;
+                    content = bookData.end || '';
+                    pageText = currentLang === 'en' ? 'End Page' : '结束页';
+                } else {
+                    const pageKey = (currentPage + 1).toString();
+                    title = '';
+                    author = '';
+                    imagePath = `images/${pageKey}.png`;
+                    content = bookData[pageKey] || '';
+                    pageText = `${currentLang === 'en' ? 'Page' : '页'} ${pageKey} ${currentLang === 'en' ? 'of' : '共'} ${totalTextPages}`;
+                }
+                
+                // --- 2. Update DOM Elements ---
+                titleElement.style.display = isCoverPage ? 'block' : 'none';
+                authorElement.style.display = isCoverPage ? 'block' : 'none';
+
+                titleElement.textContent = bookData.title;
+                authorElement.textContent = bookData.author;
+                imageElement.src = imagePath;
+                pageNumberElement.textContent = pageText;
+                
+                // --- NEW LINK RENDERING LOGIC ---
+                const linkPrefix = 'URL:';
+                let speechText;
+
+                if (content.startsWith(linkPrefix)) {
+                    // Content format: URL:Link Text:https://example.com
+                    const linkParts = content.substring(linkPrefix.length).split(':');
+                    
+                    // We expect two parts: Link Text (part 0) and the URL (part 1)
+                    if (linkParts.length >= 2) {
+                        const linkText = linkParts[0].trim();
+                        // The rest of the parts are the full URL (in case it contains more colons)
+                        const url = linkParts.slice(1).join(':').trim(); 
+
+                        // Create the HTML link element
+                        contentElement.innerHTML = `<a href="${url}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();">${linkText}</a>`;
+                        
+                        // Set speech text to announce the link
+                        speechText = currentLang === 'en' 
+                            ? `Check out the link: ${linkText}` 
+                            : `请查看链接: ${linkText}`;
+
+                        // Add back pre-wrap for non-link content to maintain original formatting
+                        contentElement.style.whiteSpace = 'normal'; 
+                    } else {
+                         // Fallback if the link format is invalid, treat as regular text
+                         contentElement.textContent = content;
+                         contentElement.style.whiteSpace = 'pre-wrap';
+                         speechText = content;
+                    }
+                } else {
+                    // Regular text page content
+                    contentElement.textContent = content;
+                    contentElement.style.whiteSpace = 'pre-wrap';
+                    
+                    // --- 3. Speech Logic for regular content ---
+                    if (isCoverPage) {
+                        speechText = `${bookData.title}. By ${bookData.author}. ${content}`;
+                    } else {
+                        speechText = content;
+                    }
+                }
+                
+                stopSpeaking();
+                speakContent(speechText);
+            }
+
+            function changePage(direction) {
+                const bookData = getBookData();
+                const totalTextPages = Object.keys(bookData).filter(key => !isNaN(parseInt(key))).length;
+                let newPage = currentPage + direction;
+
+                // Looping Logic (End Page to Cover Page)
+                if (direction === 1) { 
+                    if (newPage > totalTextPages) {
+                        newPage = -1; 
+                    }
+                } else if (direction === -1) { 
+                    if (newPage < -1) {
+                        return;
+                    }
+                }
+                
+                if (newPage >= -1 && newPage <= totalTextPages) {
+                    currentPage = newPage;
+                    updateUI();
+                }
+            }
+
+            // --- Navigation Event Handlers (Click and Keypress) ---
+            document.body.addEventListener('click', (event) => {
+                if (event.target.id === 'lang-toggle' || event.target.tagName === 'A') return;
+
+                const isRightSide = event.clientX > window.innerWidth / 2;
+                if (isRightSide) {
+                    changePage(1);
+                } else {
+                    if (currentPage > -1) {
+                        changePage(-1);
+                    }
+                }
+            });
+
+            document.body.addEventListener('keyup', (event) => {
+                const isNextKey = event.key === 'Enter' || event.keyCode === 13 || event.key === 'ArrowRight' || event.keyCode === 39;
+                const isPreviousKey = event.key === 'ArrowLeft' || event.keyCode === 37;
+
+                if (isNextKey) {
+                    changePage(1);
+                } else if (isPreviousKey) {
+                    if (currentPage > -1) {
+                        changePage(-1);
+                    }
+                }
+            });
+            
+            updateUI(); // Initial UI setup
+        });
+    </script>
+</body>
+</html>
